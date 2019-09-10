@@ -32,7 +32,7 @@
   >- Familiarity with passing data to a template
   >- Familiarity with using Django session 
   
-  * ##### Survey Form
+* ##### Survey Form
   > Build a Django application that accepts a form submission and presents the submitted data on a results page
   > Do NOT have a single URL handle BOTH the POST submission as well as the rendering of the html. In other words, never render on a post.  
   

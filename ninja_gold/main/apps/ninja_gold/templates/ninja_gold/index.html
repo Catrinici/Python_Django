@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}">
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        .wrapper {
+            display: inline-flex;
+            text-align: center;
+        }
+        /* .box {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    margin-left: 10px;
+} */
+        
+        .footer {
+            display: inline-block
+        }
+        
+        .activities {
+            text-align: initial;
+            padding-left: 20px;
+            border: 1px solid black;
+            width: 680px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body class="album py-5 bg-light">
+
+    <div class="header album py-5 bg-light">
+        <h3>Your Gold: {{request.session.total_gold}}</h3>
+        <form action="/reset" method="post">
+            {% csrf_token %}
+            <button>Reset</button>
+        </form>
+
+    </div>
+    <div class="wrapper">
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem; margin-left: 10px">
+            <div class="card-header">
+                <h4>Farm</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">(earns 10-20 golds)</p>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="farm" />
+                    <button>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;margin-left: 10px">
+            <div class="card-header">
+                <h4>Cave</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">(earns 5-10 golds)</p>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="building" value="cave" />
+                    <button>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;margin-left: 10px">
+            <div class="card-header">
+                <h4>House</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">(earns 2-5 golds)</p>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="building" value="house" />
+                    <button>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;margin-left: 10px">
+            <div class="card-header">
+                <h4>Casino</h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">(earns/takes 0-50 golds)</p>
+                <form action="/process_money" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="building" value="casino" />
+                    <button>Find Gold!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer jumbotron">
+        <h4>Activities</h4>
+        <div class="activities">
+            {% for log in request.session.activities reversed %} {% if "lost" in log %}
+            <h5 class="text-danger">{{ log }}</h5>
+            {% else %}
+            <h5 class="text-success">{{ log }}</h5>
+            {% endif %} {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

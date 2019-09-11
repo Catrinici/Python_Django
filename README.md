@@ -44,3 +44,6 @@
   >- Create a new app called 'session_words'.
   >- Allow the user to add any new word to the session.  The user should be able to specify the color to display the word and whether the word should appear in bigger fonts.  The user should be able to clear the session as well.
   >- Show the words stored in the session on the right.
+
+* ##### Ninja Gold
+  >- Recreate the Ninja Gold game from Flask, but this time with Django.  Create this from scratch so that you can practice how to set up a new Django project

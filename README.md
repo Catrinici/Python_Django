@@ -39,3 +39,8 @@
   >- Start Django app from scratch
   >- Reinforce the important concepts you want to master
   >- Get you to build things a lot faster as each iteration will help you optimize your workflow
+
+* #####  Session Words
+  >- Create a new app called 'session_words'.
+  >- Allow the user to add any new word to the session.  The user should be able to specify the color to display the word and whether the word should appear in bigger fonts.  The user should be able to clear the session as well.
+  >- Show the words stored in the session on the right.

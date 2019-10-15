@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login/ Registration</title>
+    <style media="screen">
+    .main_content{
+      width: 800px;
+      margin: 0 auto;
+    }
+    label{
+      display: block;
+    }
+    fieldset{
+      display: inline-block;
+      vertical-align: top;
+      width: 275px;
+      height: 150px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="main_content">
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <fieldset>
+        <legend>Register</legend>
+        <form class="register" action="/register" method="post">
+          {% csrf_token %}
+          <label for="first_name">
+            First Name
+            <input type="text" name="first_name">
+          </label>
+          <label for="last_name">
+            Last Name
+            <input type="text" name="last_name">
+          </label>
+          <label for="email">
+            Email
+            <input type="text" name="email">
+          </label>
+          <label for="password">
+            Password
+            <input type="password" name="password">
+          </label>
+          <label for="confirm_password">
+            Confirm Password
+            <input type="text" name="confirm_password">
+          </label>
+          <button type="submit" name="button">Register</button>
+        </form>
+      </fieldset>
+      <fieldset>
+        <legend>Login</legend>
+        <form class="login" action="/login" method="post">
+          {% csrf_token %}
+          <label for="email">
+            Email
+            <input type="email" name="email">
+          </label>
+          <label for="password">
+            Password
+            <input type="password" name="password">
+          </label>
+          <button type="submit" name="button">Login</button>
+        </form>
+      </fieldset>
+    </div>
+  </body>
+</html>

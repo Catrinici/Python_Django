@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Turtles</title>
+  </head>
+  <body>
+
+    <h1>{{text}}</h1>
+    {% load staticfiles %}
+    {% if color %}
+        <img src="{% static 'turtles/images/'|add:color %}" alt="">
+    {% endif %}
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Courses</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style media="screen">
+    .tabel {
+      width: 650px;
+    }
+    body {
+      margin:30px;
+    }
+    </style>
+  </head>
+  <body>
+    <h2>Add a new course</h2>
+    <form action="/course" method="post">
+      {% csrf_token %}
+      Name: <input type="text" name="name" placeholder="Add a new course"><br>
+      Description:<br>
+      <textarea name="description" rows="8" cols="80"></textarea><br>
+      <input type="submit" name="btn" value="Add Course">
+    </form>
+
+    <h2>Courses</h2>
+  <div class="tabel">
+    <table class="table table-striped">
+      <tr>
+        <th>Course Name</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        <th>Actions</th>
+      </tr>
+        {% for course in daniel %}
+      <tr>
+        <td>{{course.name}}</td>
+        <td>{{course.description}}</td>
+        <td>{{course.created_at}}</td>
+        <td><a href="{% url 'course:destroy' id=course.id%}">remove</a></td>
+      </tr>
+        {% endfor %}
+    </table>
+  </div>
+  </body>
+</html>

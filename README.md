@@ -47,3 +47,9 @@
 
 * ##### Ninja Gold
   >- Recreate the Ninja Gold game from Flask, but this time with Django.  Create this from scratch so that you can practice how to set up a new Django project
+  
+* ##### Login and Registration
+  > Rebuild the Login and Registration assignment from the flask chapter, this time using Django.
+
+
+

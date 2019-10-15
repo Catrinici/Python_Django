@@ -1,0 +1,46 @@
+<html>
+<head>
+<style media="screen">
+  h1{
+    text-decoration: underline;
+  }
+  #resulttext{
+    display: block;
+    border: 1px solid black;
+    width: 30%;
+    background-color: green;
+    margin: 20px;
+    font-size: 18pt;
+  }
+  body{
+    padding-left: 10%;
+
+  }
+  input[type="radio"]{
+    margin: 10px;
+  }
+  .error{
+    color: red;
+    font-size: 20pt;
+    font-weight: bold;
+  }
+</style>
+</head>
+  <body>
+
+          <p class='error'>{{error}}</p>
+
+    <p id='resulttext'>The email address you entered {{submitemail}} is a VALID email address! Thank you!</p>
+    <h1>Email addresses entered:</h1>
+    <!-- with all the data we can then construct a more structured output -->
+    <form class="" action="/success" method="POST">
+      {% csrf_token %}
+      {% for email in all_emails %}
+         <input type='radio' name='id' value="{{email.id}}">{{ email.emailaddress}}&nbsp&nbsp&nbsp{{ email.created_at}}</br>
+      {% endfor %}
+      <input type="submit" name="submit" value="Delete">
+    </form>
+    <a href="/">Back Home</a>
+
+  </body>
+</html>

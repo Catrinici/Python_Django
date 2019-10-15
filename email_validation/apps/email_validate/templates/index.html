@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+    #wrapper{
+      margin: auto;
+      width: 970px;
+      text-align: center;
+    }
+    label{
+      position: absolute;
+      left:30%;
+      margin: 5px;
+    }
+    input[type='text']{
+      margin: 5px;
+      width: 150px;
+    }
+    input[type='submit']{
+      margin: 10px;
+      position: relative;
+      left: 220px;
+    }
+    .error{
+      color: red;
+      font-size: 20pt;
+      font-weight: bold;
+    }
+    fieldset{
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+  }
+  </style>
+</head>
+  <body>
+    <div id="wrapper">
+      <p class='error'>{{error}}</p>
+      <fieldset>
+        <legend>Please add your email address:</legend>
+        <form class="" action="/" method="post">
+          {% csrf_token %}
+          <label for="">Email address:</label>
+          <input type="text" name="email" value="">
+          <input type="submit" name="submit" value="submit">
+        </form>
+      </fieldset>
+    </div>
+  </body>
+</html>
